@@ -1,10 +1,17 @@
 # system_asset_picker
 
-A modern Flutter plugin that leverages Android's native Photo Picker UI to select images and videos without requiring storage permissions. This plugin provides a clean, system-native experience that complies with Play Store guidelines while offering powerful media selection capabilities.
+A modern Flutter plugin that leverages Android's native Photo Picker UI to select images and videos
+without requiring storage permissions. This plugin provides a clean, system-native experience that
+complies with Play Store guidelines while offering powerful media selection capabilities.
+
+## 🎬 Demo
+
+![App Demo](https://raw.githubusercontent.com/krishna-beti/system_asset_picker/assets/gifs/demo.gif)
 
 ## 🌟 Features
 
-- ✅ **No Storage Permissions Required** - Uses Android's built-in Photo Picker (Android 11+) and scoped storage
+- ✅ **No Storage Permissions Required** - Uses Android's built-in Photo Picker (Android 11+) and
+  scoped storage
 - 🎨 **Native Photo Picker UI** - Beautiful, system-native gallery interface
 - 📸 **Single & Multiple Image Selection** - Pick one or many images with customizable limits
 - 🎥 **Video Selection with Size Limits** - Pick videos with configurable size restrictions
@@ -16,6 +23,7 @@ A modern Flutter plugin that leverages Android's native Photo Picker UI to selec
 ## 🎯 Why This Package?
 
 Popular packages like `image_picker` and `file_picker` have limitations:
+
 - They often require `READ_MEDIA_IMAGES` and `READ_MEDIA_VIDEO` permissions
 - Play Store may reject apps using these permissions without "broad usage" justification
 - They don't provide the modern, native Photo Picker UI
@@ -76,9 +84,13 @@ import 'package:system_asset_picker/system_asset_picker.dart';
 ### Check Photo Picker Availability
 
 ```dart
-bool isAvailable = await SystemAssetPicker.isPhotoPickerAvailable();
-if (isAvailable) {
-  print('Photo Picker is available on this device');
+
+bool isAvailable = await
+SystemAssetPicker.isPhotoPickerAvailable
+();if
+(
+isAvailable) {
+print('Photo Picker is available on this device');
 }
 ```
 
@@ -86,50 +98,70 @@ if (isAvailable) {
 
 ```dart
 // From gallery
-XFile? image = await SystemAssetPicker.pickImage();
+XFile? image = await
+SystemAssetPicker.pickImage
+();
 
 // From camera
-XFile? image = await SystemAssetPicker.pickImage(
-  source: ImageSource.camera
+XFile? image = await
+SystemAssetPicker.pickImage
+(
+source: ImageSource.camera
 );
 
 if (image != null) {
-  print('Selected image: ${image.path}');
+print('Selected image: ${image.path}');
 }
 ```
 
 ### Pick Multiple Images
 
 ```dart
-List<String> imagePaths = await SystemAssetPicker.pickMultipleImages(
-  maxItems: 10, // Maximum number of images
+
+List<String> imagePaths = await
+SystemAssetPicker.pickMultipleImages
+(
+maxItems: 10, // Maximum number of images
 );
 
-print('Selected ${imagePaths.length} images');
+print('Selected ${imagePaths
+.
+length
+}
+ images
+'
+);
 ```
 
 ### Pick a Single Video
 
 ```dart
 // From gallery
-XFile? video = await SystemAssetPicker.pickVideo();
+XFile? video = await
+SystemAssetPicker.pickVideo
+();
 
 // From camera
-XFile? video = await SystemAssetPicker.pickVideo(
-  source: ImageSource.camera
+XFile? video = await
+SystemAssetPicker.pickVideo
+(
+source: ImageSource.camera
 );
 
 if (video != null) {
-  print('Selected video: ${video.path}');
+print('Selected video: ${video.path}');
 }
 ```
 
 ### Pick Multiple Videos with Size Limit
 
 ```dart
-List<String> videoPaths = await SystemAssetPicker.pickMultipleVideos(
-  maxItems: 5,           // Maximum number of videos
-  maxVideoSizeMB: 50,    // Maximum size per video in MB
+
+List<String> videoPaths = await
+SystemAssetPicker.pickMultipleVideos
+(
+maxItems: 5, // Maximum number of videos
+maxVideoSizeMB: 50, // Maximum size per video in MB
 );
 
 print('Selected ${videoPaths.length} videos');
@@ -138,19 +170,22 @@ print('Selected ${videoPaths.length} videos');
 ### Pick Images and Videos Together
 
 ```dart
-List<String> mediaPaths = await SystemAssetPicker.pickImagesAndVideos(
-  maxItems: 10,          // Maximum total items
-  maxVideoSizeMB: 100,   // Maximum size per video in MB
+
+List<String> mediaPaths = await
+SystemAssetPicker.pickImagesAndVideos
+(
+maxItems: 10, // Maximum total items
+maxVideoSizeMB: 100, // Maximum size per video in MB
 );
 
 // Process mixed media
 for (String path in mediaPaths) {
-  if (path.toLowerCase().endsWith('.mp4') || 
-      path.toLowerCase().endsWith('.mov')) {
-    print('Video: $path');
-  } else {
-    print('Image: $path');
-  }
+if (path.toLowerCase().endsWith('.mp4') ||
+path.toLowerCase().endsWith('.mov')) {
+print('Video: $path');
+} else {
+print('Image: $path');
+}
 }
 ```
 
@@ -175,11 +210,11 @@ class _MediaPickerScreenState extends State<MediaPickerScreen> {
         maxItems: 10,
         maxVideoSizeMB: 50,
       );
-      
+
       setState(() {
         _selectedMedia = paths;
       });
-      
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Selected ${paths.length} items')),
       );
@@ -227,14 +262,14 @@ class _MediaPickerScreenState extends State<MediaPickerScreen> {
 
 ### SystemAssetPicker
 
-| Method | Parameters | Return Type | Description |
-|--------|-----------|-------------|-------------|
-| `pickImage()` | `source` (optional) | `Future<XFile?>` | Pick a single image from gallery or camera |
-| `pickVideo()` | `source` (optional) | `Future<XFile?>` | Pick a single video from gallery or camera |
-| `pickMultipleImages()` | `maxItems` (required) | `Future<List<String>>` | Pick multiple images with limit |
-| `pickMultipleVideos()` | `maxItems`, `maxVideoSizeMB` | `Future<List<String>>` | Pick multiple videos with size limit |
-| `pickImagesAndVideos()` | `maxItems`, `maxVideoSizeMB` | `Future<List<String>>` | Pick mixed media with limits |
-| `isPhotoPickerAvailable()` | None | `Future<bool>` | Check if Photo Picker is available |
+| Method                     | Parameters                   | Return Type            | Description                                |
+|----------------------------|------------------------------|------------------------|--------------------------------------------|
+| `pickImage()`              | `source` (optional)          | `Future<XFile?>`       | Pick a single image from gallery or camera |
+| `pickVideo()`              | `source` (optional)          | `Future<XFile?>`       | Pick a single video from gallery or camera |
+| `pickMultipleImages()`     | `maxItems` (required)        | `Future<List<String>>` | Pick multiple images with limit            |
+| `pickMultipleVideos()`     | `maxItems`, `maxVideoSizeMB` | `Future<List<String>>` | Pick multiple videos with size limit       |
+| `pickImagesAndVideos()`    | `maxItems`, `maxVideoSizeMB` | `Future<List<String>>` | Pick mixed media with limits               |
+| `isPhotoPickerAvailable()` | None                         | `Future<bool>`         | Check if Photo Picker is available         |
 
 ### Parameters
 
@@ -256,11 +291,11 @@ The plugin only accesses files that the user explicitly selects through the syst
 
 ## 📊 Supported Android Versions
 
-| Android Version | API Level | Photo Picker | Functionality |
-|----------------|-----------|--------------|---------------|
-| Android 13+ | 33+ | Native | Full native Photo Picker with all features |
-| Android 11-12 | 30-32 | Fallback | Uses ACTION_GET_CONTENT with file type filters |
-| Android 5-10 | 21-29 | Fallback | Basic file picker with MIME type filtering |
+| Android Version | API Level | Photo Picker | Functionality                                  |
+|-----------------|-----------|--------------|------------------------------------------------|
+| Android 13+     | 33+       | Native       | Full native Photo Picker with all features     |
+| Android 11-12   | 30-32     | Fallback     | Uses ACTION_GET_CONTENT with file type filters |
+| Android 5-10    | 21-29     | Fallback     | Basic file picker with MIME type filtering     |
 
 ## ⚠️ Limitations
 
@@ -278,7 +313,10 @@ The plugin only accesses files that the user explicitly selects through the syst
 **Solution**: Ensure your device is running Android 11+ (API 30+). Check availability:
 
 ```dart
-bool available = await SystemAssetPicker.isPhotoPickerAvailable();
+
+bool available = await
+SystemAssetPicker.isPhotoPickerAvailable
+();
 ```
 
 ### Video Size Limit Not Working
@@ -288,9 +326,17 @@ bool available = await SystemAssetPicker.isPhotoPickerAvailable();
 **Solution**: Ensure you're passing `maxVideoSizeMB` parameter:
 
 ```dart
-await SystemAssetPicker.pickMultipleVideos(
-  maxItems: 5,
-  maxVideoSizeMB: 50, // Add this parameter
+await
+SystemAssetPicker.pickMultipleVideos
+(
+maxItems
+:
+5
+,
+maxVideoSizeMB
+:
+50
+, // Add this parameter
 );
 ```
 
@@ -302,16 +348,17 @@ await SystemAssetPicker.pickMultipleVideos(
 
 ```dart
 for (String path in paths) {
-  final file = File(path);
-  if (await file.exists()) {
-    print('File exists: $path');
-  }
+final file = File(path);
+if (await file.exists()) {
+print('File exists: $path');
+}
 }
 ```
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open
+an issue first to discuss what you would like to change.
 
 ## 📄 License
 
@@ -320,6 +367,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 💬 Support
 
 If you find this package helpful, please:
+
 - ⭐ Star the repository
 - 🐛 Report issues on GitHub
 - 💡 Suggest new features
@@ -328,8 +376,8 @@ If you find this package helpful, please:
 ## 🔗 Links
 
 - [Package on pub.dev](https://pub.dev/packages/system_asset_picker)
-- [GitHub Repository](https://github.com/yourusername/system_asset_picker)
-- [Issue Tracker](https://github.com/yourusername/system_asset_picker/issues)
+- [GitHub Repository](https://github.com/krishna-beti/system_asset_picker)
+- [Issue Tracker](https://github.com/krishna-beti/system_asset_picker/issues)
 - [Changelog](CHANGELOG.md)
 
 ## 👨‍💻 Author

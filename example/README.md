@@ -143,7 +143,7 @@ The example app demonstrates:
 
 For complete API documentation, visit:
 - [Package Documentation](https://pub.dev/packages/system_asset_picker)
-- [GitHub Repository](https://github.com/yourusername/system_asset_picker)
+- [GitHub Repository](https://github.com/krishna-beti/system_asset_picker)
 
 ## Troubleshooting
 

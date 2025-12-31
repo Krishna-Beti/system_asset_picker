@@ -1,7 +1,10 @@
 name: system_asset_picker
 description: A modern Flutter plugin for picking images and videos using Android's native Photo Picker UI without requiring storage permissions. Play Store compliant and privacy-focused.
-version: 0.0.1
-homepage:
+version: 0.0.2
+homepage: https://github.com/Krishna-Beti/system_asset_picker
+repository: https://github.com/Krishna-Beti/system_asset_picker
+issue_tracker: https://github.com/Krishna-Beti/system_asset_picker/issues
+documentation: https://pub.dev/packages/system_asset_picker
 
 environment:
   sdk: ^3.7.0
@@ -38,13 +41,17 @@ flutter:
       android:
         package: com.example.system_asset_picker
         pluginClass: SystemAssetPickerPlugin
-      ios:
-        pluginClass: SystemAssetPickerPlugin
+
+topics:
+  - photo-picker
+  - image-picker
+  - video-picker
+  - media-picker
+  - no-permissions
 
   # To add assets to your plugin package, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+assets:
+  - assets/gifs/
   #
   # For details regarding assets in packages, see
   # https://flutter.dev/to/asset-from-package

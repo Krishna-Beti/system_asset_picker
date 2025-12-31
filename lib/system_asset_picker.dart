@@ -1,4 +1,4 @@
-library system_asset_picker;
+library;
 
 import 'package:image_picker/image_picker.dart';
 

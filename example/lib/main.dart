@@ -48,39 +48,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  /*Future<void> _pickMedia(int maxItems) async {
-    setState(() {
-      _isLoading = true;
-    });
-
-    try {
-      final paths = await SystemAssetPicker.pickImagesAndVideos(maxItems: maxItems, maxVideoSizeMB: 50);
-      setState(() {
-        _selectedPaths = paths;
-        _isLoading = false;
-      });
-
-      if (paths.isNotEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Selected ${paths.length} item(s)'),
-            backgroundColor: Colors.green,
-          ),
-        );
-      }
-    } catch (e) {
-      setState(() {
-        _isLoading = false;
-      });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
-  }*/
-
   void _clearSelection() {
     setState(() {
       _selectedPaths = [];
@@ -175,6 +142,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                       child: const Text('Pick multiple Videos with max limit'),
                     ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        var data = await SystemAssetPicker.pickImagesAndVideos(maxItems: 10, maxVideoSizeMB: 100);
+                        _selectedPaths = data;
+                        setState(() {});
+                      },
+                      child: const Text('Pick multiple Image and Videos with max limit'),
+                    ),
                   ],
                 ),
               ],
@@ -266,17 +241,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
-  /*Widget _buildPickButton(String label, int maxItems) {
-    return ElevatedButton(
-      onPressed: _isPickerAvailable ? () {
-        _pickMedia(maxItems);
-      } : () {
-        print('Photo Picker not available on this device');
-      },
-      child: Text(label),
-    );
-  }*/
 
   void _showMediaDetails(String path) {
     final file = File(path);
