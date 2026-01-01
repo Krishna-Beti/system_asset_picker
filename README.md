@@ -6,7 +6,7 @@ complies with Play Store guidelines while offering powerful media selection capa
 
 ## 🎬 Demo
 
-![App Demo]([https://github.com/Krishna-Beti/system_asset_picker/blob/main/assets/gifs/demo_gif.gif])
+![App Demo](https://raw.githubusercontent.com/Krishna-Beti/system_asset_picker/main/assets/gifs/demo_gif.gif)
 
 ## 🌟 Features
 
