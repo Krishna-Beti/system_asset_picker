@@ -6,7 +6,7 @@ complies with Play Store guidelines while offering powerful media selection capa
 
 ## 🎬 Demo
 
-![App Demo]([https://drive.google.com/file/d/1qWMCQvWc7RVavd5knNztFKm-mE9pAXAg/view?usp=sharing])
+![App Demo]([https://github.com/Krishna-Beti/system_asset_picker/blob/main/assets/gifs/demo.gif])
 
 ## 🌟 Features
 
@@ -22,7 +22,7 @@ complies with Play Store guidelines while offering powerful media selection capa
 
 ## 🎯 Why This Package?
 
-Popular packages like `image_picker` and `file_picker` have limitations:
+Popular packages like `image_picker`, `file_picker` and some other packages have limitations:
 
 - They often require `READ_MEDIA_IMAGES` and `READ_MEDIA_VIDEO` permissions
 - Play Store may reject apps using these permissions without "broad usage" justification
